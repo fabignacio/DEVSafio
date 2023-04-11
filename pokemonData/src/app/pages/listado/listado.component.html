@@ -1,57 +1,130 @@
-<div class="container">
+<section>
     Hola Fabi
-</div>
+</section>
 
 <p-divider></p-divider>
 
-<div class="container">
-    <p-splitter [style]="{ height: '300px' }" [panelSizes]="[50, 50]" [minSizes]="[10, 0]" styleClass="mb-5">
-        <ng-template pTemplate>
-            <p-splitter layout="vertical" [panelSizes]="[15, 85]">
-                <ng-template pTemplate>
-                    <p-splitter [panelSizes]="[20, 80]">
+<section style="width: 100%; height: 700px;">
 
-                        <!-- SECCION PARA TODOS LOS POKEMONS -->
-                        <ng-template pTemplate>
-                            <div class="col flex align-items-center justify-content-center">
-                                <p-table [value]="pokedexListado" [tableStyle]="{'min-width': '50rem'}"
-                                    [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-                                    [tableStyle]="{ 'min-width': '50rem' }" [globalFilterFields]="['name']"
-                                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                                    [rowsPerPageOptions]="[10, 25, 50]">
-                                    <ng-template pTemplate="header">
-                                        <tr>
-                                            <th style="width: 4rem"></th>
-                                            <th>Nombre</th>
-                                            <th>Url</th>
-                                            <th>Tu favorito es...</th>
-                                        </tr>
-                                    </ng-template>
-
-                                    <!-- CUERPO DE LA TABLA -->
-                                    <ng-template pTemplate="body" let-pokedex>
-                                        <tr>
-                                            <td>
-                                                <p-tableRadioButton [value]="pokedex"
-                                                    (click)="masInfo(pokedex.name)"></p-tableRadioButton>
-                                            </td>
-                                            <td>{{ pokedex.name | uppercase }}</td>
-                                            <td>{{ pokedex.url }}</td>
-                                        </tr>
-                                    </ng-template>
-                                </p-table>
-                            </div>
-                        </ng-template>
-
-                        <!-- SECCION PARA EL POKEMON SELECCIONADO -->
-                        <ng-template pTemplate>
-                            <div class="col flex align-items-center justify-content-center">
-                                {{pokemon | json}}
-                            </div>
-                        </ng-template>
-                    </p-splitter>
+    <div class="row flex align-items-center justify-content-center">
+        <p-card header="Pokedex" subheader="Pokemon" [style]="{width: '900px'}">
+            <p-table [value]="pokedexListado" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10"
+                [showCurrentPageReport]="true" [globalFilterFields]="['name']"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[10, 25, 50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 4rem"></th>
+                        <th>Nombre</th>
+                        <th>Url</th>
+                        <th>Tu favorito es...</th>
+                    </tr>
                 </ng-template>
-            </p-splitter>
-        </ng-template>
-    </p-splitter>
-</div>
+
+                <!-- CUERPO DE LA TABLA -->
+                <ng-template pTemplate="body" let-pokedex>
+                    <tr>
+                        <td>
+                            <p-tableRadioButton [value]="pokedex" (click)="masInfo(pokedex.name)"></p-tableRadioButton>
+                        </td>
+                        <td>{{ pokedex.name | uppercase }}</td>
+                        <td>{{ pokedex.url }}</td>
+                        <td></td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+
+        <p-card>
+            <ng-template pTemplate>
+                <h1>Informacion detallada de {{pokemon.name}}</h1>
+                <p>Habilidades: {{pokemon.abilities! | json}}</p>
+                <p>Base Experience: {{pokemon.base_experience | json}}</p>
+                <p>Forms: {{pokemon.forms | json}}</p>
+                <p>Height: {{pokemon.height | json}}</p>
+                <p>Id: {{pokemon.id}}</p>
+                <p>Location area Encounters {{pokemon.location_area_encounters}}</p>
+                <p>name: {{pokemon.name | json}}</p>
+                <p>order: {{pokemon.order | json}}</p>
+                <p>past_types: {{pokemon.past_types | json}}</p>
+                <p>species: {{pokemon.species | json}}</p>
+                <p>types: {{pokemon.types | json}}</p>
+                <p>weight: {{pokemon.weight}}</p>
+            </ng-template>
+        </p-card>
+    </div>
+
+
+
+
+</section>
+
+<section style="width: 100%px; margin-top: 150px;">
+    <p-card header="Cantidad de Pokemones por Letra">
+        <p-table [value]="data" [tableStyle]="{'min-width': '50rem'}">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                    <th>E</th>
+                    <th>F</th>
+                    <th>G</th>
+                    <th>H</th>
+                    <th>I</th>
+                    <th>J</th>
+                    <th>K</th>
+                    <th>L</th>
+                    <th>M</th>
+                    <th>N</th>
+                    <th>Ñ</th>
+                    <th>O</th>
+                    <th>P</th>
+                    <th>Q</th>
+                    <th>R</th>
+                    <th>S</th>
+                    <th>T</th>
+                    <th>U</th>
+                    <th>V</th>
+                    <th>W</th>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>Z</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-datos>
+                <tr>
+                    <td> {{ datos.A }} </td>
+                    <td> {{ datos.B }} </td>
+                    <td> {{ datos.C }} </td>
+                    <td> {{ datos.D }} </td>
+                    <td> {{ datos.E }} </td>
+                    <td> {{ datos.F }} </td>
+                    <td> {{ datos.G }} </td>
+                    <td> {{ datos.H }} </td>
+                    <td> {{ datos.I }} </td>
+                    <td> {{ datos.J }} </td>
+                    <td> {{ datos.K }} </td>
+                    <td> {{ datos.L }} </td>
+                    <td> {{ datos.M }} </td>
+                    <td> {{ datos.N }} </td>
+                    <!-- LETRA Ñ -->
+                    <td> {{ datos.NN }} </td>
+                    <td> {{ datos.O }} </td>
+                    <td> {{ datos.P }} </td>
+                    <td> {{ datos.Q }} </td>
+                    <td> {{ datos.R }} </td>
+                    <td> {{ datos.S }} </td>
+                    <td> {{ datos.T }} </td>
+                    <td> {{ datos.U }} </td>
+                    <td> {{ datos.V }} </td>
+                    <td> {{ datos.W }} </td>
+                    <td> {{ datos.X }} </td>
+                    <td> {{ datos.Y }} </td>
+                    <td> {{ datos.Z }} </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-card>
+</section>

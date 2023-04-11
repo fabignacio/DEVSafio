@@ -2,23 +2,29 @@ import { NgModule } from '@angular/core';
 
 /* Importacios propias de PrimeNg */
 import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
-import { TableModule } from 'primeng/table';
 import { SplitterModule } from 'primeng/splitter';
+import { ScrollerModule } from 'primeng/scroller';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [],
   imports: [
     ButtonModule,
+    CardModule,
     DividerModule,
+    SplitterModule,
+    ScrollerModule,
     TableModule,
-    SplitterModule
   ],
   exports: [
     ButtonModule,
+    CardModule,
     DividerModule,
+    SplitterModule,
+    ScrollerModule,
     TableModule,
-    SplitterModule
   ]
 })
 export class PrimeNgModule { }

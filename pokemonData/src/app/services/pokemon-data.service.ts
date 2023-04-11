@@ -15,7 +15,11 @@ import { Pokemon } from '../interfaces/pokemon.interface';
 })
 export class PokemonDataService {
 
+  /*VARIABLES DE ENTORNO */
   private _baseUrl: string = enviroment.baseApiPokemon;
+  private _offset: number = enviroment.offset;
+  private _limit: number = enviroment.limit;
+
   private _pokedex!: Pokedex;
 
   getPokedex() {
@@ -26,7 +30,7 @@ export class PokemonDataService {
 
   /* METODO QUE OBTIENE TODOS LOS POKEMONS */
   listadoPokemon = (): Observable<Pokedex> => {
-    const url: string = `${this._baseUrl}pokemon?offset=0&limit=1279`;
+    const url: string = `${this._baseUrl}pokemon?offset=${this._offset}&limit=${this._limit}`;
 
     return this.http.get<Pokedex>(url)
       .pipe(
@@ -51,5 +55,4 @@ export class PokemonDataService {
         )
       );
   };
-
 }
