@@ -1,0 +1,36 @@
+<!-- 
+<p-splitter [style]="{ height: '300px' }" styleClass="mb-5">
+    <ng-template pTemplate>
+        <div class="col flex align-items-center justify-content-center">Panel 1</div>
+    </ng-template>
+    <ng-template pTemplate>
+        <div class="col flex align-items-center justify-content-center">Panel 2</div>
+    </ng-template>
+</p-splitter> -->
+
+<div class="card">
+
+    <!-- ENCABEZADO DE LA TABLA -->
+    <p-table [value]="pokedexListado" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 4rem"></th>
+                <th></th>
+                <th>Nombre</th>
+                <th>Url</th>
+            </tr>
+        </ng-template>
+
+        <!-- CUERPO DE LA TABLA -->
+        <ng-template pTemplate="body" let-pokedex>
+            <tr>
+                <td>
+                    <p-tableRadioButton [value]="pokedex"></p-tableRadioButton>
+                </td>
+                <td>{{pokedex.name}}</td>
+                <td>{{pokedex.url}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>
