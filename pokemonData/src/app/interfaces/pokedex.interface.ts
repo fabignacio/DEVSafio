@@ -9,8 +9,3 @@ export interface Result {
     name: string;
     url: string;
 }
-
-export interface Pokemon {
-    name: string;
-    url: string;
-}

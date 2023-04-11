@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
 import { PokemonDataService } from '../../services/pokemon-data.service';
 
 /*INTERFACE */
-import { Pokedex, Pokemon } from './../../interfaces/pokedex.interface';
+import { Pokedex } from './../../interfaces/pokedex.interface';
+import { Pokemon } from '../../interfaces/pokemon.interface';
 
 @Component({
   selector: 'app-listado',
@@ -16,9 +17,10 @@ export class ListadoComponent {
 
   /*Interfaces */
   listado!: Pokedex;
-  selectedPokemon!: Pokemon;
+  getPokemon!: Pokemon;
 
   pokedexListado: any;
+  pokemon: any;
 
   /* PAGINADOR */
   first: number = 0;
@@ -37,9 +39,25 @@ export class ListadoComponent {
 
   };
 
-  masInfo = (url: string) => {
-    console.log(url);
-  }
+  /* ENCUENTRA UN POKEMON EN ESPECIFICO */
+  masInfo = (nombre: string) => {
+    this.pokedexService.getPokemon(nombre).subscribe((
+      resp => {
+        this.getPokemon = resp;
+        this.pokemon = this.getPokemon;
+      }
+    ));
+  };
+
+  /* MARCA UN POKEMON COMO FAVORITO */
+  favorito = (nombre: string) => {
+    this.pokedexService.getPokemon(nombre).subscribe((
+      resp => {
+        this.getPokemon = resp;
+        this.pokemon = this.getPokemon;
+      }
+    ));
+  };
 
   /* METODOS PARA LA PAGINACION */
   next() {

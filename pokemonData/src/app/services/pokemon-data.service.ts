@@ -8,6 +8,7 @@ import { enviroment } from './../../enviroments/enviroment';
 
 /*INTERFACES */
 import { Pokedex } from '../interfaces/pokedex.interface';
+import { Pokemon } from '../interfaces/pokemon.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,9 @@ export class PokemonDataService {
 
   constructor(private http: HttpClient) { }
 
+  /* METODO QUE OBTIENE TODOS LOS POKEMONS */
   listadoPokemon = (): Observable<Pokedex> => {
-    const url = `${this._baseUrl}pokemon?offset=0&limit=1279`;
+    const url: string = `${this._baseUrl}pokemon?offset=0&limit=1279`;
 
     return this.http.get<Pokedex>(url)
       .pipe(
@@ -35,4 +37,19 @@ export class PokemonDataService {
         )
       );
   };
+
+  /* METODO QUE OBTIENE UN POKEMON */
+  getPokemon = (nombre: string): Observable<Pokemon> => {
+    const url: string = `${this._baseUrl}pokemon/${nombre}`
+
+    return this.http.get<Pokemon>(url)
+      .pipe(
+        (
+          map(resp => {
+            return resp
+          })
+        )
+      );
+  };
+
 }
