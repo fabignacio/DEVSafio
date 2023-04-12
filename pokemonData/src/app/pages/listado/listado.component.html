@@ -23,7 +23,11 @@
                         <form [formGroup]="formGroup">
                             <p-autoComplete formControlName="selectedPokemon" [dropdown]="true"
                                 [suggestions]="filtroPokemon" (completeMethod)="search($event)" field="name">
-                            </p-autoComplete> &nbsp; <p-button icon="pi pi-filter" (click)="filtrar()"></p-button>
+                            </p-autoComplete>
+                            &nbsp;
+                            <p-button icon="pi pi-filter" (click)="filtrar()"></p-button>
+                            &nbsp;
+                            <p-button icon="pi pi-filter-slash" (click)="limpiar()" [disabled]="!habilitado"></p-button>
                         </form>
                     </th>
                     <th></th>

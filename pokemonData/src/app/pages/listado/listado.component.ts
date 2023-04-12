@@ -25,6 +25,7 @@ export class ListadoComponent {
   pokemon: any;
   abecedario: any;
   existe = false;
+  habilitado = false;
 
   /* PROPIEDADES PARA EL AUTOCOMPLETADO */
   pokemonSelected: any;
@@ -272,13 +273,26 @@ export class ListadoComponent {
     let filtroPokemon: string[] = [];
 
     this.pokedexListado.forEach((x: any) => {
-      if (x.name.includes(filtro)) {
+      if (x.name.includes(filtro) || x.name === filtro) {
         filtroPokemon.push(x);
       }
     });
 
     this.pokedexListado = filtroPokemon;
-  }
+    this.habilitado = true;
+  };
+
+  /* METODO PARA LIMPIAR EL FILTRO */
+  limpiar = () => {
+    this.pokedexService.listadoPokemon()
+      .subscribe((
+        resp => {
+          this.listado = resp;
+          this.pokedexListado = this.listado.results;
+        })
+      );
+    this.habilitado = false;
+  };
 
   /* METODOS PARA LA PAGINACION */
   next() {
