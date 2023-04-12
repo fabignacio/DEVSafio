@@ -23,6 +23,11 @@ export class ListadoComponent {
   pokedexListado: any;
   pokemon: any;
   abecedario: any;
+  existe = false;
+
+  /* PROPIEDADES PARA EL AUTOCOMPLETADO */
+  selectedPokemon: any;
+  filtroPokemon: any[] = [];
 
   /* CONTADORES */
   contA: number = 0;
@@ -55,17 +60,13 @@ export class ListadoComponent {
 
   data: any;
 
-  /* PROPIEDADES PARA EL AUTOCOMPLETADO */
-  selectedPokemon: any;
-  filtroPokemon: any[] = [];
-
   /* PAGINADOR */
   first: number = 0;
   rows: number = 10;
 
   constructor(private pokedexService: PokemonDataService) { }
 
-  /* CARGAR LA TABLA INICIAL Y LA DEL CONTADOR POR LETRA */
+  /* CARGAR LA TABLA INICIAL */
   ngOnInit() {
 
     this.pokedexService.listadoPokemon()
@@ -225,6 +226,7 @@ export class ListadoComponent {
       resp => {
         this.getPokemon = resp;
         this.pokemon = this.getPokemon;
+        this.existe = true;
       }
     ));
   };
@@ -244,15 +246,18 @@ export class ListadoComponent {
     let filtroPokemon: string[] = [];
     let query = event.query;
 
-    let nombresPokemon: any[] = [] = this.pokedexListado.map((x: { name: string; }) => x.name);
+    let nombresPokemon: any[] = []
+
+    this.pokedexListado.forEach((x: any) => {
+      nombresPokemon.push(x);
+    });
 
     for (let i = 0; i < nombresPokemon.length; i++) {
       let pokemon = nombresPokemon[i];
-      if (pokemon.toLowerCase().indexOf(query.toLowerCase()) == 0) { filtroPokemon.push(pokemon) }
+      if (pokemon.name.toLowerCase().indexOf(query.toLowerCase()) == 0) { filtroPokemon.push(pokemon) }
     }
 
     this.filtroPokemon = filtroPokemon;
-    console.log('filtroPokemon:', this.filtroPokemon);
   }
 
   /* METODOS PARA LA PAGINACION */
