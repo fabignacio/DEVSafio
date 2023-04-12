@@ -54,7 +54,10 @@ export class ListadoComponent {
   contZ: number = 0;
 
   data: any;
-  data2: any[] = [];
+
+  /* PROPIEDADES PARA EL AUTOCOMPLETADO */
+  selectedPokemon: any;
+  filtroPokemon: any[] = [];
 
   /* PAGINADOR */
   first: number = 0;
@@ -236,16 +239,20 @@ export class ListadoComponent {
     ));
   };
 
-  /* PRUEBA METODO ALFREDO */
-  abecedarioPokemon = () => {
-    let cont: number = 0;
-    let palabra: string = '';
-    const pruebaArreglo = this.listado.results;
+  /* METODO PARA AUTOCOMPLETAR */
+  search = (event: any) => {
+    let filtroPokemon: string[] = [];
+    let query = event.query;
 
-    pruebaArreglo.forEach(x => {
+    let nombresPokemon: any[] = [] = this.pokedexListado.map((x: { name: string; }) => x.name);
 
-    })
+    for (let i = 0; i < nombresPokemon.length; i++) {
+      let pokemon = nombresPokemon[i];
+      if (pokemon.toLowerCase().indexOf(query.toLowerCase()) == 0) { filtroPokemon.push(pokemon) }
+    }
 
+    this.filtroPokemon = filtroPokemon;
+    console.log('filtroPokemon:', this.filtroPokemon);
   }
 
   /* METODOS PARA LA PAGINACION */

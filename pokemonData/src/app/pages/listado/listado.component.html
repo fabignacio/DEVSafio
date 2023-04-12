@@ -18,6 +18,19 @@
                         <th>Url</th>
                         <th>Tu favorito es...</th>
                     </tr>
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                            <p-autoComplete [(ngModel)]="selectedPokemon" [dropdown]="false"
+                                [suggestions]="filtroPokemon" (completeMethod)="search($event)"
+                                field="pokemon"></p-autoComplete>
+                        </th>
+                        <th>
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
                 </ng-template>
 
                 <!-- CUERPO DE LA TABLA -->
@@ -28,7 +41,9 @@
                         </td>
                         <td>{{ pokedex.name | uppercase }}</td>
                         <td>{{ pokedex.url }}</td>
-                        <td></td>
+                        <td>
+
+                        </td>
                     </tr>
                 </ng-template>
             </p-table>
@@ -38,14 +53,13 @@
     <div style="float: right;">
         <p-card>
             <ng-template pTemplate>
-                <h1>Informacion detallada de {{pokemon.name | uppercase}}</h1>
+                <h1>Informacion detallada de {{pokemon.name! | uppercase}}</h1>
                 <p>Habilidades: {{pokemon.abilities! | json}}</p>
                 <p>Base Experience: {{pokemon.base_experience | json}}</p>
                 <p>Forms: {{pokemon.forms | json}}</p>
                 <p>Height: {{pokemon.height | json}}</p>
                 <p>Id: {{pokemon.id}}</p>
                 <p>Location Area Encounters: {{pokemon.location_area_encounters}}</p>
-                <p>Name: {{pokemon.name | json}}</p>
                 <p>Order: {{pokemon.order | json}}</p>
                 <p>Past_types: {{pokemon.past_types | json}}</p>
                 <p>Species: {{pokemon.species | json}}</p>
@@ -124,5 +138,3 @@
         </p-table>
     </p-card>
 </div>
-
-<button (click)="abecedarioPokemon()">Prueba Metodo Alfredo</button>
