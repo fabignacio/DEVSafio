@@ -54,6 +54,7 @@ export class ListadoComponent {
   contZ: number = 0;
 
   data: any;
+  data2: any[] = [];
 
   /* PAGINADOR */
   first: number = 0;
@@ -70,7 +71,7 @@ export class ListadoComponent {
           this.listado = resp;
           this.pokedexListado = this.listado.results;
 
-          this.pokedexListado.map((x: { name: string; }) => {
+          this.listado.results.map((x: { name: string; }) => {
             if (x.name.toUpperCase().startsWith('A')) {
               this.contA += 1;
             };
@@ -234,6 +235,18 @@ export class ListadoComponent {
       }
     ));
   };
+
+  /* PRUEBA METODO ALFREDO */
+  abecedarioPokemon = () => {
+    let cont: number = 0;
+    let palabra: string = '';
+    const pruebaArreglo = this.listado.results;
+
+    pruebaArreglo.forEach(x => {
+
+    })
+
+  }
 
   /* METODOS PARA LA PAGINACION */
   next() {

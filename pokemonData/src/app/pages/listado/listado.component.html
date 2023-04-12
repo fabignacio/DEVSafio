@@ -4,10 +4,9 @@
 
 <p-divider></p-divider>
 
-<section style="width: 100%; height: 700px;">
-
-    <div class="row flex align-items-center justify-content-center">
-        <p-card header="Pokedex" subheader="Pokemon" [style]="{width: '900px'}">
+<section style="display: flex;">
+    <div style="float: left;">
+        <p-card header="Listado Pokemon" [style]="{width: '900px'}">
             <p-table [value]="pokedexListado" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10"
                 [showCurrentPageReport]="true" [globalFilterFields]="['name']"
                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -34,32 +33,30 @@
                 </ng-template>
             </p-table>
         </p-card>
-
+    </div>
+    <p-divider layout="vertical"></p-divider>
+    <div style="float: right;">
         <p-card>
             <ng-template pTemplate>
-                <h1>Informacion detallada de {{pokemon.name}}</h1>
+                <h1>Informacion detallada de {{pokemon.name | uppercase}}</h1>
                 <p>Habilidades: {{pokemon.abilities! | json}}</p>
                 <p>Base Experience: {{pokemon.base_experience | json}}</p>
                 <p>Forms: {{pokemon.forms | json}}</p>
                 <p>Height: {{pokemon.height | json}}</p>
                 <p>Id: {{pokemon.id}}</p>
-                <p>Location area Encounters {{pokemon.location_area_encounters}}</p>
-                <p>name: {{pokemon.name | json}}</p>
-                <p>order: {{pokemon.order | json}}</p>
-                <p>past_types: {{pokemon.past_types | json}}</p>
-                <p>species: {{pokemon.species | json}}</p>
-                <p>types: {{pokemon.types | json}}</p>
-                <p>weight: {{pokemon.weight}}</p>
+                <p>Location Area Encounters: {{pokemon.location_area_encounters}}</p>
+                <p>Name: {{pokemon.name | json}}</p>
+                <p>Order: {{pokemon.order | json}}</p>
+                <p>Past_types: {{pokemon.past_types | json}}</p>
+                <p>Species: {{pokemon.species | json}}</p>
+                <p>Types: {{pokemon.types | json}}</p>
+                <p>Weight: {{pokemon.weight}}</p>
             </ng-template>
         </p-card>
     </div>
-
-
-
-
 </section>
 
-<section style="width: 100%px; margin-top: 150px;">
+<div>
     <p-card header="Cantidad de Pokemones por Letra">
         <p-table [value]="data" [tableStyle]="{'min-width': '50rem'}">
             <ng-template pTemplate="header">
@@ -109,7 +106,6 @@
                     <td> {{ datos.L }} </td>
                     <td> {{ datos.M }} </td>
                     <td> {{ datos.N }} </td>
-                    <!-- LETRA Ñ -->
                     <td> {{ datos.NN }} </td>
                     <td> {{ datos.O }} </td>
                     <td> {{ datos.P }} </td>
@@ -127,4 +123,6 @@
             </ng-template>
         </p-table>
     </p-card>
-</section>
+</div>
+
+<button (click)="abecedarioPokemon()">Prueba Metodo Alfredo</button>
