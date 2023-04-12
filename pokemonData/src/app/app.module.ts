@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 
@@ -11,7 +11,7 @@ import { PrimeNgModule } from './primeng/prime-ng.module';
 
 /* COMPONENTES */
 import { ListadoComponent } from './pages/listado/listado.component';
-import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     PrimeNgModule,
   ],

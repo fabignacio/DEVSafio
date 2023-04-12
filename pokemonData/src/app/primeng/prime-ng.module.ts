@@ -5,6 +5,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
+import { DropdownModule } from 'primeng/dropdown';
 import { SplitterModule } from 'primeng/splitter';
 import { ScrollerModule } from 'primeng/scroller';
 import { TableModule } from 'primeng/table';
@@ -16,6 +17,7 @@ import { TableModule } from 'primeng/table';
     ButtonModule,
     CardModule,
     DividerModule,
+    DropdownModule,
     SplitterModule,
     ScrollerModule,
     TableModule,
@@ -25,6 +27,7 @@ import { TableModule } from 'primeng/table';
     ButtonModule,
     CardModule,
     DividerModule,
+    DropdownModule,
     SplitterModule,
     ScrollerModule,
     TableModule,

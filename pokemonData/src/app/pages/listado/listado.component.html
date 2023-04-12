@@ -20,8 +20,11 @@
                 <tr>
                     <th></th>
                     <th>
-                        <p-autoComplete [(ngModel)]="selectedPokemon" [dropdown]="true" [suggestions]="filtroPokemon"
-                            (completeMethod)="search($event)" field="name"></p-autoComplete>
+                        <form [formGroup]="formGroup">
+                            <p-autoComplete formControlName="selectedPokemon" [dropdown]="true"
+                                [suggestions]="filtroPokemon" (completeMethod)="search($event)" field="name">
+                            </p-autoComplete> &nbsp; <p-button icon="pi pi-filter" (click)="filtrar()"></p-button>
+                        </form>
                     </th>
                     <th></th>
                     <th></th>
@@ -44,7 +47,7 @@
         </p-table>
     </div>
     <p-divider layout="vertical"></p-divider>
-    <div style="float: right;" *ngIf="existe;">
+    <div style="float: right; width: 500px; display: flex; margin-left: 150px;" *ngIf="existe;">
         <p-card>
             <ng-template pTemplate>
                 <h1>Informacion detallada de {{pokemon.name! | uppercase}}</h1>

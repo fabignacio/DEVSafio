@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
 import { PokemonDataService } from '../../services/pokemon-data.service';
 
 /*INTERFACE */
-import { Pokedex } from './../../interfaces/pokedex.interface';
+import { Pokedex, Result } from './../../interfaces/pokedex.interface';
 import { Pokemon } from '../../interfaces/pokemon.interface';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-listado',
@@ -26,7 +27,7 @@ export class ListadoComponent {
   existe = false;
 
   /* PROPIEDADES PARA EL AUTOCOMPLETADO */
-  selectedPokemon: any;
+  pokemonSelected: any;
   filtroPokemon: any[] = [];
 
   /* CONTADORES */
@@ -64,7 +65,12 @@ export class ListadoComponent {
   first: number = 0;
   rows: number = 10;
 
-  constructor(private pokedexService: PokemonDataService) { }
+  /* FORMULARIO REACTIVO */
+  formGroup: FormGroup = this.fb.group({
+    selectedPokemon: ['']
+  })
+
+  constructor(private pokedexService: PokemonDataService, private fb: FormBuilder) { }
 
   /* CARGAR LA TABLA INICIAL */
   ngOnInit() {
@@ -254,10 +260,24 @@ export class ListadoComponent {
 
     for (let i = 0; i < nombresPokemon.length; i++) {
       let pokemon = nombresPokemon[i];
-      if (pokemon.name.toLowerCase().indexOf(query.toLowerCase()) == 0) { filtroPokemon.push(pokemon) }
-    }
-
+      if (pokemon.name.toLowerCase().indexOf(query.toLowerCase()) == 0) { filtroPokemon.push(pokemon); }
+    };
     this.filtroPokemon = filtroPokemon;
+  };
+
+  /* METODO PARA FILTRAR */
+  filtrar = () => {
+    let filtro = this.formGroup.get('selectedPokemon')?.value;
+
+    let filtroPokemon: string[] = [];
+
+    this.pokedexListado.forEach((x: any) => {
+      if (x.name.includes(filtro)) {
+        filtroPokemon.push(x);
+      }
+    });
+
+    this.pokedexListado = filtroPokemon;
   }
 
   /* METODOS PARA LA PAGINACION */
