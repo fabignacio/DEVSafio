@@ -24,6 +24,8 @@ export class ListadoComponent {
   pokedexListado: any;
   pokemon: any;
   abecedario: any;
+
+  /* BOLEANOS PARA CONTROLAR CIERTAS PARTES DEL HTML */
   existe = false;
   habilitado = false;
 
@@ -69,7 +71,7 @@ export class ListadoComponent {
   /* FORMULARIO REACTIVO */
   formGroup: FormGroup = this.fb.group({
     selectedPokemon: ['']
-  })
+  });
 
   constructor(private pokedexService: PokemonDataService, private fb: FormBuilder) { }
 
@@ -250,10 +252,11 @@ export class ListadoComponent {
 
   /* METODO PARA AUTOCOMPLETAR */
   search = (event: any) => {
+
     let filtroPokemon: string[] = [];
     let query = event.query;
 
-    let nombresPokemon: any[] = []
+    let nombresPokemon: any[] = [];
 
     this.pokedexListado.forEach((x: any) => {
       nombresPokemon.push(x);
@@ -263,17 +266,21 @@ export class ListadoComponent {
       let pokemon = nombresPokemon[i];
       if (pokemon.name.toLowerCase().indexOf(query.toLowerCase()) == 0) { filtroPokemon.push(pokemon); }
     };
+
     this.filtroPokemon = filtroPokemon;
   };
 
   /* METODO PARA FILTRAR */
   filtrar = () => {
     let filtro = this.formGroup.get('selectedPokemon')?.value;
+    let nombre = filtro.name;
 
     let filtroPokemon: string[] = [];
 
     this.pokedexListado.forEach((x: any) => {
       if (x.name.includes(filtro) || x.name === filtro) {
+        filtroPokemon.push(x);
+      } else if (x.name.includes(nombre) || x.name === nombre) {
         filtroPokemon.push(x);
       }
     });
@@ -292,6 +299,7 @@ export class ListadoComponent {
         })
       );
     this.habilitado = false;
+    this.formGroup.reset();
   };
 
   /* METODOS PARA LA PAGINACION */
