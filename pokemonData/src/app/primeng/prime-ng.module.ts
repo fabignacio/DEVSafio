@@ -4,10 +4,8 @@ import { NgModule } from '@angular/core';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
-import { DropdownModule } from 'primeng/dropdown';
-import { SplitterModule } from 'primeng/splitter';
-import { ScrollerModule } from 'primeng/scroller';
 import { TableModule } from 'primeng/table';
 
 @NgModule({
@@ -16,20 +14,16 @@ import { TableModule } from 'primeng/table';
     AutoCompleteModule,
     ButtonModule,
     CardModule,
+    DialogModule,
     DividerModule,
-    DropdownModule,
-    SplitterModule,
-    ScrollerModule,
     TableModule,
   ],
   exports: [
     AutoCompleteModule,
     ButtonModule,
     CardModule,
+    DialogModule,
     DividerModule,
-    DropdownModule,
-    SplitterModule,
-    ScrollerModule,
     TableModule,
   ]
 })

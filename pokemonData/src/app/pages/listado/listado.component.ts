@@ -19,15 +19,19 @@ export class ListadoComponent {
   /*INTERFACES */
   listado!: Pokedex;
   getPokemon!: Pokemon;
+  getFavorito!: Pokemon;
 
   /* VARIABLES DE LA CLASE */
   pokedexListado: any;
   pokemon: any;
   abecedario: any;
+  favorito: any;
 
   /* BOLEANOS PARA CONTROLAR CIERTAS PARTES DEL HTML */
   existe = false;
   habilitado = false;
+  isFavorito = false;
+  visible = false;
 
   /* PROPIEDADES PARA EL AUTOCOMPLETADO */
   pokemonSelected: any;
@@ -241,11 +245,12 @@ export class ListadoComponent {
   };
 
   /* MARCA UN POKEMON COMO FAVORITO */
-  favorito = (nombre: string) => {
+  miFavorito = (nombre: string) => {
     this.pokedexService.getPokemon(nombre).subscribe((
       resp => {
-        this.getPokemon = resp;
-        this.pokemon = this.getPokemon;
+        this.getFavorito = resp;
+        this.favorito = this.getFavorito;
+        this.isFavorito = true;
       }
     ));
   };
@@ -301,6 +306,11 @@ export class ListadoComponent {
     this.habilitado = false;
     this.formGroup.reset();
   };
+
+  /* MOSTRAR DIALOG DEL POKEMON FAVORITO */
+  showInfo = () => {
+    this.visible = true;
+  }
 
   /* METODOS PARA LA PAGINACION */
   next() {
