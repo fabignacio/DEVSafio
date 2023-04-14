@@ -10,13 +10,21 @@ import { AppComponent } from './app.component';
 import { PrimeNgModule } from './primeng/prime-ng.module';
 
 /* COMPONENTES */
-import { ListadoComponent } from './pages/listado/listado.component';
+import { MainPageComponent } from './pages/mainPage/main-page.component';
+import { TablaListadoComponent } from './pages/tablaListado/tabla-listado.component';
+import { TablaAbecedarioComponent } from './pages/tabla-abecedario/tabla-abecedario.component';
+import { CartaPokemonComponent } from './pages/carta-pokemon/carta-pokemon.component';
+import { PokemonFavoritoComponent } from './pages/pokemon-favorito/pokemon-favorito.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListadoComponent,
+    MainPageComponent,
+    TablaListadoComponent,
+    TablaAbecedarioComponent,
+    CartaPokemonComponent,
+    PokemonFavoritoComponent,
   ],
   imports: [
     BrowserModule,

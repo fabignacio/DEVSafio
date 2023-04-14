@@ -1,0 +1,66 @@
+<p-card header="Cantidad de Pokemones por Letra">
+    <p-table [value]="data" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>D</th>
+                <th>E</th>
+                <th>F</th>
+                <th>G</th>
+                <th>H</th>
+                <th>I</th>
+                <th>J</th>
+                <th>K</th>
+                <th>L</th>
+                <th>M</th>
+                <th>N</th>
+                <th>Ñ</th>
+                <th>O</th>
+                <th>P</th>
+                <th>Q</th>
+                <th>R</th>
+                <th>S</th>
+                <th>T</th>
+                <th>U</th>
+                <th>V</th>
+                <th>W</th>
+                <th>X</th>
+                <th>Y</th>
+                <th>Z</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-datos>
+            <tr>
+                <td> {{ datos.A }} </td>
+                <td> {{ datos.B }} </td>
+                <td> {{ datos.C }} </td>
+                <td> {{ datos.D }} </td>
+                <td> {{ datos.E }} </td>
+                <td> {{ datos.F }} </td>
+                <td> {{ datos.G }} </td>
+                <td> {{ datos.H }} </td>
+                <td> {{ datos.I }} </td>
+                <td> {{ datos.J }} </td>
+                <td> {{ datos.K }} </td>
+                <td> {{ datos.L }} </td>
+                <td> {{ datos.M }} </td>
+                <td> {{ datos.N }} </td>
+                <td> {{ datos.NN }} </td>
+                <td> {{ datos.O }} </td>
+                <td> {{ datos.P }} </td>
+                <td> {{ datos.Q }} </td>
+                <td> {{ datos.R }} </td>
+                <td> {{ datos.S }} </td>
+                <td> {{ datos.T }} </td>
+                <td> {{ datos.U }} </td>
+                <td> {{ datos.V }} </td>
+                <td> {{ datos.W }} </td>
+                <td> {{ datos.X }} </td>
+                <td> {{ datos.Y }} </td>
+                <td> {{ datos.Z }} </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-card>

@@ -1,0 +1,28 @@
+<div style="float: left;">
+    <h1>Tu pokemon favorito</h1>
+</div>
+<p-divider layout="vertical"></p-divider>
+<div style="float: right; width: 500px; display: flex; margin-left: 150px;" *ngIf="favorito">
+    <p-button label="{{favorito.name | uppercase}}" styleClass="p-button-text" (click)="showInfo()"></p-button>
+    <p-dialog header="{{favorito.name | uppercase}}" [(visible)]="visible" [style]="{width: '50vw'}">
+        <p-card>
+            <p>Abilities: {{favorito.abilities | json}}</p>
+            <p>Base Experience: {{favorito.base_experience | json}}</p>
+            <p>Forms: {{favorito.forms | json}}</p>
+            <p>Game Indices: {{favorito.game_indices | json}}</p>
+            <p>Height: {{favorito.height | json}}</p>
+            <p>Held Items: {{favorito.held_items | json}}</p>
+            <p>Id: {{favorito.id}}</p>
+            <p>Is default: {{favorito.is_default}}</p>
+            <p>Location Area Encounters: {{favorito.location_area_encounters}}</p>
+            <p>Moves: {{favorito.moves | json}}</p>
+            <p>Order: {{favorito.order | json}}</p>
+            <p>Past_types: {{favorito.past_types | json}}</p>
+            <p>Species: {{favorito.species | json}}</p>
+            <p>Sprites: {{favorito.sprites | json}}</p>
+            <p>Stats: {{favorito.stats | json}}</p>
+            <p>Types: {{favorito.types | json}}</p>
+            <p>Weight: {{favorito.weight}}</p>
+        </p-card>
+    </p-dialog>
+</div>

@@ -1,0 +1,16 @@
+<p-card *ngIf="pokemon">
+    <ng-template pTemplate>
+        <h1>Informacion detallada de {{pokemon.name! | uppercase}}</h1>
+        <p>Habilidades: {{pokemon.abilities! | json}}</p>
+        <p>Base Experience: {{pokemon.base_experience | json}}</p>
+        <p>Forms: {{pokemon.forms | json}}</p>
+        <p>Height: {{pokemon.height | json}}</p>
+        <p>Id: {{pokemon.id}}</p>
+        <p>Location Area Encounters: {{pokemon.location_area_encounters}}</p>
+        <p>Order: {{pokemon.order | json}}</p>
+        <p>Past_types: {{pokemon.past_types | json}}</p>
+        <p>Species: {{pokemon.species | json}}</p>
+        <p>Types: {{pokemon.types | json}}</p>
+        <p>Weight: {{pokemon.weight}}</p>
+    </ng-template>
+</p-card>
