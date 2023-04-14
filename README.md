@@ -21,7 +21,7 @@ Para su mejor comprensión está dividido en variados componentes, que de forma 
 Para clonar este repositorio se pueden utilizar los siguientes código: 
 
 1. `git clone https://github.com/fabignacio/DEVSafio.git` 
-2. `git clone https://github.com/fabignacio/DEVSafio.git`
+2. `git clone git@github.com:fabignacio/DEVSafio.git`
 
 Al clonar este repositorio, la carpeta node_modules no se encuentra, ya que el proyecto cuenta con un archivo .gitignore. Para hacer las instalaciones necesarias de esta carpeta debera de ejecutar el siguiente comando en la terminal `npm install`. Una vez instalada la carpeta node_modules, para poder levantar de manera local la página deberá de ejecutar este comando en la terminal `ng serve -o`.
 
@@ -32,4 +32,3 @@ Para tener una mejor estetica, se utilizó el template de PrimeNG, para mayor in
 ## Para finalizar.
 
 Solo repetir las gracias por la oportunidad. Fue un gran esfuerzo el poder hacer este DEVsafio, me ayudó bastante para ir potenciando algunas falencias que tenía respecto a Angular, pero sobre todo, fue divertido el tener que hacer esta página. Muchas gracias a la estimada Isabel de la Cuadra, por brindarme la chance y confiar en mi. 
- 
